@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"
+            android:text="title"
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#443355" />
+
+        <TextView
+            android:id="@+id/titleContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="titlecontent"
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#443355" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/titleContent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:text="date"
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#443355" />
+
+        <TextView
+            android:id="@+id/dateContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/date"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="datecontent"
+            android:textAppearance="?android:textAppearanceListItem"
+            android:textColor="#443355"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

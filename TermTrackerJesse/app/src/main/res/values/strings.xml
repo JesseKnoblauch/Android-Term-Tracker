@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">Term Tracker Jesse</string>
+    <string name="terms_list">Terms List</string>
+    <string name="assessments_list">Assessments List</string>
+    <string name="courses_list">Courses List</string>
+    <string name="add_term">Term Add</string>
+    <string name="Course_Title">Course Title</string>
+    <string name="Start_Date">Start Date</string>
+    <string name="End_Date">End Date</string>
+    <string name="Term_Title">Term Title</string>
+    <string name="Course_Type">Type</string>
+    <string name="Title">Title</string>
+    <string name="Date">Date</string>
+    <string name="Text">Text</string>
+    <string name="edit_term">Term Edit</string>
+    <string name="details_term">Term Details</string>
+    <string name="edit_course">Course Edit</string>
+    <string name="details_course">Course Details</string>
+    <string name="edit_assessment">Assessment Edit</string>
+    <string name="details_assessment">Assessment Details</string>
+    <string name="edit_note">Note Edit</string>
+    <string name="edit_instructor">Instructor Edit</string>
+    <string name="Name">Name</string>
+    <string name="Phone">Phone</string>
+    <string name="Email">Email</string>
+    <string name="Note_Details">Note Details</string>
+    <string name="Share_Note">Share Note</string>
+
+</resources>

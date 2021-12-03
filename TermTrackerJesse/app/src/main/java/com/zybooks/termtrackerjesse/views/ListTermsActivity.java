@@ -1,0 +1,98 @@
+package com.zybooks.termtrackerjesse.views;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.zybooks.termtrackerjesse.Database.DataBaseHelper;
+import com.zybooks.termtrackerjesse.R;
+import com.zybooks.termtrackerjesse.adapter.TermListAdapter;
+import com.zybooks.termtrackerjesse.models.Term;
+import com.zybooks.termtrackerjesse.utility.Utility;
+
+import java.util.ArrayList;
+
+public class ListTermsActivity extends AppCompatActivity {
+    private ListView termsListView;
+    TermListAdapter termAdapter;
+
+    DataBaseHelper dataBaseHelper;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_terms_list);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        termsListView = findViewById(R.id.terms_list);
+
+        dataBaseHelper = new DataBaseHelper(ListTermsActivity.this);
+
+        ArrayList<Term> terms = dataBaseHelper.getAllTerms();
+        termAdapter = new TermListAdapter(ListTermsActivity.this, R.layout.list_view_details, terms);
+        termsListView.setAdapter(termAdapter);
+
+        Utility.setListViewHeightBasedOnChildren(termsListView);
+
+        termsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Term selectedTerm = (Term) adapterView.getItemAtPosition(position);
+                if(selectedTerm.getId() > 0) {
+
+                    Intent detailsTerm = new Intent(ListTermsActivity.this, DetailsTermActivity.class);
+                    detailsTerm.putExtra("TERM_ID", selectedTerm.getId());
+
+                    startActivity(detailsTerm);
+
+                } else {
+                    Toast.makeText(ListTermsActivity.this, "Error Finding Term", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        MenuItem home = menu.findItem(R.id.action_home);
+
+        home.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent = new Intent(ListTermsActivity.this, MainActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.floatingActionButton:
+                Intent createIntent = new Intent(ListTermsActivity.this, EditTermActivity.class);
+                createIntent.putExtra("TERM_ID", -1);
+                startActivity(createIntent);
+                break;
+            default:
+                break;
+        }
+    }
+}

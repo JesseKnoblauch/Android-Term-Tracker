@@ -1,0 +1,2 @@
+rootProject.name = "Term Tracker Jesse"
+include ':app'
